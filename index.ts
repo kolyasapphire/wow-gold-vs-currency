@@ -102,10 +102,12 @@ const handle = async () => {
   // biome-ignore lint: forEach is good enough
   sliced.forEach((x) => console.debug(...Object.values(x)));
 
-  await kv.set(["data"], sliced, { expireIn: 3 * 60 * 60 * 1000 });
+  const final = { data: sliced, totalItems: withGold.length, goldPosition };
+
+  await kv.set(["data"], final, { expireIn: 3 * 60 * 60 * 1000 });
   console.debug("Added to cache");
 
-  return Response.json(sliced);
+  return Response.json(final);
 };
 
 Deno.serve(handle);
