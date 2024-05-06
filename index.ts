@@ -94,7 +94,10 @@ const handle = async () => {
   console.debug("Gold position is", goldPosition);
 
   // Keeps output neat
-  const sliced = formatted.slice(goldPosition - 5 - 1, goldPosition + 5);
+  const sliced = formatted.slice(
+    goldPosition - 5 - 1, // 5 before gold
+    goldPosition + 5 + 1 - 1, // 5 after gold
+  );
 
   // biome-ignore lint: forEach is good enough
   sliced.forEach((x) => console.debug(...Object.values(x)));
