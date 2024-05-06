@@ -17,7 +17,7 @@ const handle = async () => {
 
   if (inCache.value) {
     console.debug("In cache");
-    return Response.json(inCache);
+    return Response.json(inCache.value);
   }
 
   console.debug("Not in cache");
