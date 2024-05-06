@@ -11,6 +11,17 @@ const handle = async () => {
 
   if (!KEY || !SECRET) throw new Error("Bad config");
 
+  const kv = await Deno.openKv();
+
+  const inCache = await kv.get(["data"]);
+
+  if (inCache.value) {
+    console.debug("In cache");
+    return Response.json(inCache);
+  }
+
+  console.debug("Not in cache");
+
   const wowClient = await wow.createInstance({
     key: KEY,
     secret: SECRET,
@@ -87,6 +98,9 @@ const handle = async () => {
 
   // biome-ignore lint: forEach is good enough
   sliced.forEach((x) => console.debug(...Object.values(x)));
+
+  await kv.set(["data"], sliced, { expireIn: 3 * 60 * 60 * 1000 });
+  console.debug("Added to cache");
 
   return Response.json(sliced);
 };
