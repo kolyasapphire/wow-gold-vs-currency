@@ -33,7 +33,7 @@ const handle = async () => {
 
   // Originally in copper, so gold = x / 100 / 100
   const goldPerToken = (await wowClient.token<TokenRes>()).data.price / 10000;
-  console.debug(goldPerToken, "gold per token");
+  console.debug(goldPerToken, "gold per WoW token");
 
   // Prices for WoW token
   // https://us.shop.battle.net/en-us/product/world-of-warcraft-token
@@ -41,7 +41,7 @@ const handle = async () => {
   // EUR 20
   // GBP 15
   const goldPerDollar = goldPerToken / 20;
-  console.debug(goldPerDollar, "gold per USD");
+  console.debug(goldPerDollar, "gold per one USD");
 
   const currencyNamesRes = await fetch(
     "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.min.json",
@@ -78,7 +78,7 @@ const handle = async () => {
   console.debug(
     "Filtered to",
     sorted.length,
-    "without crypto and with gold added",
+    "currencies without crypto and with gold added",
   );
 
   const formatted = sorted.map((x, ix) => ({
@@ -100,7 +100,7 @@ const handle = async () => {
   );
 
   // biome-ignore lint: forEach is good enough
-  sliced.forEach((x) => console.debug(...Object.values(x)));
+  sliced.forEach((x) => console.debug(...Object.values(x).slice(1)));
 
   const final = { data: sliced, totalItems: withGold.length, goldPosition };
 
