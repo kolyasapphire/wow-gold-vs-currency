@@ -1,4 +1,5 @@
-![Screenshot](https://github.com/kolyasapphire/wow-gold-vs-currency/assets/4752441/206d0c50-0588-49be-a9be-507da6c2889e)
+
+<img src="https://github.com/kolyasapphire/wow-gold-vs-currency/assets/4752441/206d0c50-0588-49be-a9be-507da6c2889e" width="571px" height="396px" />
 
 # World of Warcraft Gold vs. Fiat Currency
 
