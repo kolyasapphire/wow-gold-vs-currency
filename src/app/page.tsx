@@ -13,7 +13,7 @@ type BackendRes = {
 };
 
 async function getData() {
-  const res = await fetch("https://wow-gold-vs-currency.deno.dev", {
+  const res = await fetch("https://wow-gold-vs-currency.kolyasapphire.deno.net", {
     // We have cache at home lol (on the backend)
     cache: "no-cache",
     // next: { revalidate: 3600 },
